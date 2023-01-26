@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import style from '../styles/Create.module.css';
 
-export default function Main() {
+export default function Create() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -8,9 +9,5 @@ export default function Main() {
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
-  return (
-    <main className='App'>
-            Main
-    </main>
-  );
+  return <main className='App'>create</main>;
 }

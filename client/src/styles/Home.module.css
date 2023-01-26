@@ -1,0 +1,16 @@
+.infoContent {
+  padding: 1rem 0px;
+}
+
+#createStoryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  width: 100%;
+  color: white;
+  background-color: rgb(128, 28, 222);
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 700;
+}
