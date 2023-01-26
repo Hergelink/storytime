@@ -9,7 +9,7 @@ export default function Create() {
     setInput(() => e.target.value);
   };
 
-  async function generateText(input) {
+  async function generateText() {
     try {
       const response = await fetch('/openai/generatetext', {
         method: 'POST',
@@ -41,12 +41,16 @@ export default function Create() {
   return (
     <main className='App'>
       <form onSubmit={handleSubmit}>
-        <input
-          placeholder='random question'
-          type='text'
-          onChange={handleInput}
-        />
-        <button type='submit'>submit</button>
+        <label id={style.createLabel}>
+          What kind of story do you want?
+          <input
+            id={style.createInput}
+            placeholder='random question'
+            type='text'
+            onChange={handleInput}
+          />
+        </label>
+        <button id={style.createBtn} type='submit'>Create Story</button>
       </form>
       <span id='output'>{data}</span>
     </main>
