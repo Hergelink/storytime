@@ -3,8 +3,11 @@ import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
 
 export default function Create() {
-  const [data, setData] = useState('Your story will appear here');
+  
   const [input, setInput] = useState(null);
+  const [title, setTitle] = useState('Your story will appear here');
+  const [description, setDescription] = useState('Description');
+
 
   const handleInput = (e) => {
     setInput(() => e.target.value);
@@ -27,7 +30,9 @@ export default function Create() {
       }
 
       const returnedData = await response.json();
-      setData(returnedData.data);
+      console.log(returnedData);
+      setTitle(returnedData.data.aiOutput);
+      setDescription(returnedData.data.entryOutput);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +58,7 @@ export default function Create() {
         </label>
         <button id={style.createBtn} type='submit'>Create Story</button>
       </form>
-      <OutputArea data={data} />
+      <OutputArea title={title} description={description} />
     </main>
   );
 }
