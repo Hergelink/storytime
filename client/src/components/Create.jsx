@@ -55,7 +55,7 @@ export default function Create() {
           What kind of story do you want?
           <input
             id={style.createInput}
-            placeholder='random question'
+            placeholder='A race story in space'
             type='text'
             onChange={handleInput}
           />

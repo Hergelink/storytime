@@ -11,7 +11,6 @@ const textGenerator = async (req, res) => {
   const userPrompt = req.body.input;
   const editedPrompt = `Create a story title based on: ${userPrompt}`;
   try {
-
     // Title
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
@@ -25,7 +24,7 @@ const textGenerator = async (req, res) => {
     });
 
     const aiOutput = response.data.choices[0].text;
-    
+
     // Entry Paragraph
     const description = `Write a entry paragraph for a story based on this title: ${aiOutput}`;
 
@@ -42,8 +41,8 @@ const textGenerator = async (req, res) => {
 
     const entryOutput = entry.data.choices[0].text;
 
-    // Whole Story 
-    const wholeStory = `Continue this entry paragraph with a long dialogue based story: ${entryOutput}`
+    // Whole Story
+    const wholeStory = `Continue this entry paragraph with a long dialogue based story: ${entryOutput}`;
 
     const story = await openai.createCompletion({
       model: 'text-davinci-003',
@@ -59,7 +58,7 @@ const textGenerator = async (req, res) => {
     const storyOutput = story.data.choices[0].text;
 
     // Image Generation
-    const imagePrompt = `Generate a photorealistic image based on this story title and don't include words: ${aiOutput}`
+    const imagePrompt = `Generate a photorealistic image based on this story title and don't include words: ${aiOutput}`;
 
     const image = await openai.createImage({
       prompt: imagePrompt,
@@ -70,8 +69,8 @@ const textGenerator = async (req, res) => {
     const imageUrl = image.data.data[0].url;
 
     // Final data to be sent to client
-    const finalData = {aiOutput, entryOutput, storyOutput, imageUrl};
-    
+    const finalData = { aiOutput, entryOutput, storyOutput, imageUrl };
+
     res.status(200).json({
       success: true,
       data: finalData,
@@ -88,16 +87,7 @@ const textGenerator = async (req, res) => {
       success: false,
       error: 'Prompt cannot be generated',
     });
-
-    
   }
-
-  
-
-  
-
- 
-
 };
 
 module.exports = { textGenerator };
