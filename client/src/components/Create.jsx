@@ -7,6 +7,8 @@ export default function Create() {
   const [input, setInput] = useState(null);
   const [title, setTitle] = useState('Your story will appear here');
   const [description, setDescription] = useState('Description');
+  const [story, setStory] = useState('Story');
+  const [image, setImage] = useState('');
 
 
   const handleInput = (e) => {
@@ -24,15 +26,17 @@ export default function Create() {
           input,
         }),
       });
-      console.log(input);
+      
       if (!response.ok) {
         throw new Error('prompt could not be generated');
       }
 
       const returnedData = await response.json();
-      console.log(returnedData);
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
+      setStory(returnedData.data.storyOutput);
+      setImage(returnedData.data.imageUrl)
+      
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +62,7 @@ export default function Create() {
         </label>
         <button id={style.createBtn} type='submit'>Create Story</button>
       </form>
-      <OutputArea title={title} description={description} />
+      <OutputArea title={title} description={description} story={story} image={image}/>
     </main>
   );
 }

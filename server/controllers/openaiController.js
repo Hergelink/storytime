@@ -25,10 +25,10 @@ const textGenerator = async (req, res) => {
     });
 
     const aiOutput = response.data.choices[0].text;
-    console.log(aiOutput)
+    
+    // Entry Paragraph
     const description = `Write a entry paragraph for a story based on this title: ${aiOutput}`;
 
-    // Entry Paragraph
     const entry = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt: description,
@@ -41,12 +41,36 @@ const textGenerator = async (req, res) => {
     });
 
     const entryOutput = entry.data.choices[0].text;
-    console.log(entryOutput);
 
+    // Whole Story 
+    const wholeStory = `Continue this entry paragraph with a long dialogue based story: ${entryOutput}`
 
+    const story = await openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: wholeStory,
+      temperature: 0.8,
+      max_tokens: 2500,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      best_of: 1,
+    });
+
+    const storyOutput = story.data.choices[0].text;
+
+    // Image Generation
+    const imagePrompt = `Generate a photorealistic image based on this story title and don't include words: ${aiOutput}`
+
+    const image = await openai.createImage({
+      prompt: imagePrompt,
+      n: 1,
+      size: '512x512',
+    });
+
+    const imageUrl = image.data.data[0].url;
 
     // Final data to be sent to client
-    const finalData = {aiOutput, entryOutput};
+    const finalData = {aiOutput, entryOutput, storyOutput, imageUrl};
     
     res.status(200).json({
       success: true,
