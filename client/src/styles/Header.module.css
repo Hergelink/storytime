@@ -26,3 +26,7 @@ header {
   text-decoration: none;
   font-weight: 700;
 }
+
+#createBtn:hover {
+  background-color: rgb(144, 47, 235);
+}

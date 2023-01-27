@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import style from '../styles/Create.module.css';
+import OutputArea from './OutputArea';
 
 export default function Create() {
-  const [data, setData] = useState('generated text will apear here');
+  const [data, setData] = useState('Your story will appear here');
   const [input, setInput] = useState(null);
 
   const handleInput = (e) => {
@@ -52,7 +53,7 @@ export default function Create() {
         </label>
         <button id={style.createBtn} type='submit'>Create Story</button>
       </form>
-      <span id='output'>{data}</span>
+      <OutputArea data={data} />
     </main>
   );
 }
