@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
+import Spinner from './Spinner';
 
 export default function Create() {
   
   const [input, setInput] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('Your story will appear here');
   const [description, setDescription] = useState('Description');
   const [story, setStory] = useState('Story');
@@ -16,6 +18,12 @@ export default function Create() {
   };
 
   async function generateText() {
+
+    setTitle('')
+    setDescription('')
+    setStory('')
+    setImage('')
+    setLoading(true)
     try {
       const response = await fetch('/openai/generatetext', {
         method: 'POST',
@@ -32,10 +40,12 @@ export default function Create() {
       }
 
       const returnedData = await response.json();
+      setImage(returnedData.data.imageUrl)
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
       setStory(returnedData.data.storyOutput);
-      setImage(returnedData.data.imageUrl)
+      setLoading(false)
+
       
     } catch (error) {
       console.log(error);
@@ -60,9 +70,12 @@ export default function Create() {
             onChange={handleInput}
           />
         </label>
-        <button id={style.createBtn} type='submit'>Create Story</button>
+        <button id={style.createBtn} type='submit'>
+          {loading ? <Spinner /> : 'Create Story'}
+          {/* Create Story */}
+          </button>
       </form>
-      <OutputArea title={title} description={description} story={story} image={image}/>
+      <OutputArea title={title} description={description} story={story} image={image} />
     </main>
   );
 }

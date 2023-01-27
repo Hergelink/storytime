@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../styles/OutputArea.module.css';
-export default function OutputArea({ title, description, story, image }) {
+import Spinner from './Spinner';
+export default function OutputArea({ title, description, story, image}) {
   return (
     <>
       {image.length > 1 ? (
