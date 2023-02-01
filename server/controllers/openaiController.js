@@ -36,6 +36,8 @@ const textGenerator = async (req, res) => {
 
     const imageUrl = image.data.data[0].url;
 
+
+
     // Entry Paragraph
     const description = `Write a entry paragraph for a story based on this title: ${aiOutput}`;
 
@@ -50,7 +52,7 @@ const textGenerator = async (req, res) => {
       best_of: 1,
     });
 
-    const entryOutput = entry.data.choices[0].text;
+    const entryOutput = entry.data.choices[0].text.trim();
 
     
 
@@ -68,8 +70,8 @@ const textGenerator = async (req, res) => {
       best_of: 1,
     });
 
-    const storyBodyOutput = story.data.choices[0].text;
-
+    const storyBodyOutput = story.data.choices[0].text.trim();
+    
     // trying the ending paragraph
 
     const storyEnding = `Write an ending paragraph for this story: ${storyBodyOutput}`;
@@ -85,7 +87,7 @@ const textGenerator = async (req, res) => {
       best_of: 1,
     });
 
-    const storyEndOutput = storyEnd.data.choices[0].text;
+    const storyEndOutput = storyEnd.data.choices[0].text.trim();
 
 
     // Final data to be sent to client

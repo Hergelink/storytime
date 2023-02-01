@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
 import Spinner from './Spinner';
@@ -75,10 +75,9 @@ export default function Create() {
         </label>
         <button id={style.createBtn} type='submit'>
           {loading ? <Spinner /> : 'Create Story'}
-          {/* Create Story */}
           </button>
       </form>
-      <OutputArea title={title} description={description} storyBody={storyBody} image={image} storyEnd={storyEnd} />
+      <OutputArea title={title} description={description} storyBody={storyBody} image={image} storyEnd={storyEnd} loading={loading}/>
     </main>
   );
 }
