@@ -37,6 +37,11 @@
   font-size: 1.2rem;
 }
 
+#storyEnd {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
 
 
 
@@ -68,6 +73,12 @@
 }
 
 @media only screen and (min-width: 38em) {
+
+  #outputContainer {
+    padding: 10px 48px;
+  }
+
+
   #downloadBtn {
     height: 35px;
   }

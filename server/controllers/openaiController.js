@@ -25,6 +25,17 @@ const textGenerator = async (req, res) => {
 
     const aiOutput = response.data.choices[0].text;
 
+    // Image Generation
+    const imagePrompt = `Generate a photorealistic image based on this story title and don't include words: ${aiOutput}`;
+
+    const image = await openai.createImage({
+      prompt: imagePrompt,
+      n: 1,
+      size: '512x512',
+    });
+
+    const imageUrl = image.data.data[0].url;
+
     // Entry Paragraph
     const description = `Write a entry paragraph for a story based on this title: ${aiOutput}`;
 
@@ -41,12 +52,14 @@ const textGenerator = async (req, res) => {
 
     const entryOutput = entry.data.choices[0].text;
 
-    // Whole Story
-    const wholeStory = `Continue this entry paragraph with a long dialogue based story: ${entryOutput}`;
+    
+
+    // trying body paragraph
+    const storyBody = `Continue this entry paragraph with a long dialogue based story but dont finish the story: ${entryOutput}`;
 
     const story = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: wholeStory,
+      prompt: storyBody,
       temperature: 0.8,
       max_tokens: 2500,
       top_p: 1,
@@ -55,21 +68,34 @@ const textGenerator = async (req, res) => {
       best_of: 1,
     });
 
-    const storyOutput = story.data.choices[0].text;
+    const storyBodyOutput = story.data.choices[0].text;
 
-    // Image Generation
-    const imagePrompt = `Generate a photorealistic image based on this story title and don't include words: ${aiOutput}`;
+    // trying the ending paragraph
 
-    const image = await openai.createImage({
-      prompt: imagePrompt,
-      n: 1,
-      size: '512x512',
+    const storyEnding = `Write an ending paragraph for this story: ${storyBodyOutput}`;
+
+    const storyEnd = await openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: storyEnding,
+      temperature: 0.8,
+      max_tokens: 3500,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      best_of: 1,
     });
 
-    const imageUrl = image.data.data[0].url;
+    const storyEndOutput = storyEnd.data.choices[0].text;
+
 
     // Final data to be sent to client
-    const finalData = { aiOutput, entryOutput, storyOutput, imageUrl };
+    const finalData = {
+      aiOutput,
+      imageUrl,
+      entryOutput,
+      storyBodyOutput,
+      storyEndOutput,
+    };
 
     res.status(200).json({
       success: true,

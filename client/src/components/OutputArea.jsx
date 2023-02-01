@@ -1,7 +1,8 @@
 import React from 'react';
 import style from '../styles/OutputArea.module.css';
-import Spinner from './Spinner';
-export default function OutputArea({ title, description, story, image}) {
+
+export default function OutputArea({ title, description, storyBody, image, storyEnd}) {
+  console.log(storyEnd);
   return (
     <>
       {image.length > 1 ? (
@@ -13,7 +14,8 @@ export default function OutputArea({ title, description, story, image}) {
           ></img>
           <h2 id={style.storyTitle}>{title}</h2>
           <p id={style.storyDescription}>{description}</p>
-          <p id={style.wholeStory}>{story}</p>
+          <p id={style.wholeStory}>{storyBody}</p>
+          <p id={style.storyEnd}>{storyEnd}</p>
           <button id={style.downloadBtn}>Download</button>
         </div>
       ) : (

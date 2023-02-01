@@ -9,8 +9,9 @@ export default function Create() {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('Your story will appear here');
   const [description, setDescription] = useState('Description');
-  const [story, setStory] = useState('Story');
+  const [storyBody, setStoryBody] = useState('Story');
   const [image, setImage] = useState('');
+  const [storyEnd, setStoryEnd] = useState('');
 
 
   const handleInput = (e) => {
@@ -20,9 +21,10 @@ export default function Create() {
   async function generateText() {
 
     setTitle('')
-    setDescription('')
-    setStory('')
     setImage('')
+    setDescription('')
+    setStoryBody('')
+    setStoryEnd('')
     setLoading(true)
     try {
       const response = await fetch('/openai/generatetext', {
@@ -43,7 +45,8 @@ export default function Create() {
       setImage(returnedData.data.imageUrl)
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
-      setStory(returnedData.data.storyOutput);
+      setStoryBody(returnedData.data.storyBodyOutput);
+      setStoryEnd(returnedData.data.storyEndOutput);
       setLoading(false)
 
       
@@ -75,7 +78,7 @@ export default function Create() {
           {/* Create Story */}
           </button>
       </form>
-      <OutputArea title={title} description={description} story={story} image={image} />
+      <OutputArea title={title} description={description} storyBody={storyBody} image={image} storyEnd={storyEnd} />
     </main>
   );
 }
