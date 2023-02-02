@@ -15,7 +15,30 @@ header {
   text-decoration: underline dashed rgb(128, 28, 222);
 }
 
-#createBtn {
+#desktopNavContainer {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  color: white;
+
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.desktopLinks:hover {
+  background-color: rgba(118, 6, 223, 0.811);
+}
+
+#loginBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +50,15 @@ header {
   font-weight: 700;
 }
 
-#createBtn:hover {
+#loginBtn:hover {
   background-color: rgb(144, 47, 235);
 }
+
+
+@media only screen and (min-width: 48em) {
+  #desktopNavContainer {
+    display: flex;
+  }
+} 
+
+

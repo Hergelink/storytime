@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 export default function Register() {
   return (
     <div className={style.auth}>
-      <h1>Register</h1>
-      <form>
-        <input required type='text' placeholder='Username' />
-        <input required type='email' placeholder='Email' />
-        <input required type='password' placeholder='Password' />
-        <button>Login</button>
-        <p>This is an error!</p>
-        <span>
-          Do you have an account? <Link to='/login'>Login</Link>
+      <h1 id={style.registerTitle}>Register</h1>
+      <form id={style.registerForm}>
+        <input className={style.registerInput} required type='text' placeholder='Username' />
+        <input className={style.registerInput} required type='email' placeholder='Email' />
+        <input className={style.registerInput} required type='password' placeholder='Password' />
+        <button id={style.registerButton}>Register</button>
+        <p id={style.errorP}>This is an error!</p>
+        <span id={style.registerSpan}>
+          Do you have an account? <Link to='/login' id={style.registerA}>Login</Link>
         </span>
       </form>
     </div>

@@ -7,9 +7,17 @@ export default function Header() {
       <Link to='/' id={style.siteLogo}>
         StoryTime Ai
       </Link>
-      <Link to='/create' id={style.createBtn}>
-        + Create
-      </Link>
+      <div id={style.desktopNavContainer}>
+        <Link to='/' className={style.desktopLinks}>
+          Home
+        </Link>
+        <Link to='/create' className={style.desktopLinks}>
+          + Create
+        </Link>
+        <Link to='/login' id={style.loginBtn}>
+          Login
+        </Link>
+      </div>
     </header>
   );
 }

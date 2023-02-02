@@ -12,13 +12,9 @@ main {
   padding: 3rem 1rem;
 }
 
-  @media only screen and (min-width: 48em) {
+@media only screen and (min-width: 48em) {
   body {
     max-width: 1000px;
     margin: 0 auto;
   }
-} 
-
-
-
-
+}

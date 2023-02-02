@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function SingleStory() {
   return (
-    <div>
-      
-    </div>
+    <div className="single">
+    
+  </div>
   )
 }
