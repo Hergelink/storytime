@@ -34,6 +34,9 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      <div>
+        <h2 style={{fontSize: '2rem', textAlign: 'center', marginTop: '4rem'}}>How does it work?</h2>
+      </div>
     </main>
   );
 }

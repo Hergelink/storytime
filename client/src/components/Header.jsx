@@ -21,7 +21,6 @@ export default function Header() {
         <span className={style.hamburger}></span>
       </div>
 
-      {/* {menuState ? null : <div id={style.mobileModal}>link1 link 2</div>} */}
       {menuState ? null : <MobileModal toggleMobileMenu={toggleMobileMenu} />}
 
       <nav id={style.desktopNavContainer}>
