@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import style from '../styles/Home.module.css';
 import heroImage from '../images/hero-image.jpeg';
+import HowtoUse from './HowtoUse';
 export default function Home() {
   return (
     <main>
-      <div id={style.heroContainer}>
+      <section id={style.heroContainer}>
         <div id={style.imageContainer}>
           <img
             id={style.heroImg}
@@ -33,10 +34,8 @@ export default function Home() {
             + Create Your Story
           </Link>
         </div>
-      </div>
-      <div>
-        <h2 style={{fontSize: '2rem', textAlign: 'center', marginTop: '4rem'}}>How does it work?</h2>
-      </div>
+      </section>
+      <HowtoUse />
     </main>
   );
 }
