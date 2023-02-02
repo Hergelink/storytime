@@ -1,6 +1,7 @@
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 1rem;
 }
 
@@ -14,6 +15,74 @@ header {
 #siteLogo:hover {
   text-decoration: underline dashed rgb(128, 28, 222);
 }
+
+/* Mobile Nav*/
+
+#mobileMenuBtn {
+  width: 45px;
+  height: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+#mobileModal {
+  position: absolute;
+  background-color: black;
+  top: 0rem;
+  left: 0;
+  height: calc(60vh - 50px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#miniHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+#mobileNav {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+
+
+.mobileLinks {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+#mobileLoginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  padding: 5px 10px;
+  color: white;
+  background-color: rgb(128, 28, 222);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Desktop Nav */
 
 #desktopNavContainer {
   display: none;
@@ -54,11 +123,12 @@ header {
   background-color: rgb(144, 47, 235);
 }
 
+@media only screen and (min-width: 54em) {
+  #mobileMenuBtn, #mobileModal  {
+    display: none;
+  }
 
-@media only screen and (min-width: 48em) {
   #desktopNavContainer {
     display: flex;
   }
-} 
-
-
+}
