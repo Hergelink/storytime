@@ -7,8 +7,8 @@
 .storyContainer {
   display: flex;
   flex-direction: column-reverse;
-  align-items: center;
   gap: 20px;
+  margin-bottom: 3rem;
 }
 
 .imageContainer {
@@ -44,8 +44,14 @@
 }
 
 @media only screen and (min-width: 54em) {
+  #storyWrapper :nth-child(2) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
   .storyContainer {
     flex-direction: row;
+    margin-bottom: 6rem;
   }
 
   .imageContainer {
@@ -62,6 +68,7 @@
   .storyInfo {
     width: 60%;
     text-align: left;
+    gap: 10px;
   }
 
   .storyLinks {
