@@ -63,7 +63,7 @@ export default function Create() {
         <label id={style.createLabel}>
           What kind of story do you want?
           <p className={style.inputDescription}>
-            Please give as much detail as possible for more personilized
+            Please give as much detail as possible for more personalized
             stories.
           </p>
           <input
