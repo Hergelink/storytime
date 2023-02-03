@@ -21,7 +21,7 @@ export default function Header() {
         <span className={style.hamburger}></span>
       </div>
 
-      {menuState ? null : <MobileModal toggleMobileMenu={toggleMobileMenu} />}
+      {menuState ? <MobileModal toggleMobileMenu={toggleMobileMenu} /> : ''}
 
       <nav id={style.desktopNavContainer}>
         <Link to='/' className={style.desktopLinks}>

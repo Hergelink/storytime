@@ -4,7 +4,6 @@ import OutputArea from './OutputArea';
 import Spinner from './Spinner';
 
 export default function Create() {
-  
   const [input, setInput] = useState(null);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('Your story will appear here');
@@ -13,19 +12,17 @@ export default function Create() {
   const [image, setImage] = useState('');
   const [storyEnd, setStoryEnd] = useState('');
 
-
   const handleInput = (e) => {
     setInput(() => e.target.value);
   };
 
   async function generateText() {
-
-    setTitle('')
-    setImage('')
-    setDescription('')
-    setStoryBody('')
-    setStoryEnd('')
-    setLoading(true)
+    setTitle('');
+    setImage('');
+    setDescription('');
+    setStoryBody('');
+    setStoryEnd('');
+    setLoading(true);
     try {
       const response = await fetch('/openai/generatetext', {
         method: 'POST',
@@ -36,20 +33,18 @@ export default function Create() {
           input,
         }),
       });
-      
+
       if (!response.ok) {
         throw new Error('prompt could not be generated');
       }
 
       const returnedData = await response.json();
-      setImage(returnedData.data.imageUrl)
+      setImage(returnedData.data.imageUrl);
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
       setStoryBody(returnedData.data.storyBodyOutput);
       setStoryEnd(returnedData.data.storyEndOutput);
-      setLoading(false)
-
-      
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -62,10 +57,15 @@ export default function Create() {
   };
 
   return (
-    <main className='App'>
+    <main>
+      <h1 id={style.pageTitle}>Create your story</h1>
       <form onSubmit={handleSubmit}>
         <label id={style.createLabel}>
           What kind of story do you want?
+          <p className={style.inputDescription}>
+            Please give as much detail as possible for more personilized
+            stories.
+          </p>
           <input
             id={style.createInput}
             placeholder='A race story in space'
@@ -73,11 +73,23 @@ export default function Create() {
             onChange={handleInput}
           />
         </label>
+
+        <p className={style.inputDescription}>
+          **Avoid harmful language as it may be flagged and result in loss of
+          credits.
+        </p>
         <button id={style.createBtn} type='submit'>
           {loading ? <Spinner /> : 'Create Story'}
-          </button>
+        </button>
       </form>
-      <OutputArea title={title} description={description} storyBody={storyBody} image={image} storyEnd={storyEnd} loading={loading}/>
+      <OutputArea
+        title={title}
+        description={description}
+        storyBody={storyBody}
+        image={image}
+        storyEnd={storyEnd}
+        loading={loading}
+      />
     </main>
   );
 }

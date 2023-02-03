@@ -1,8 +1,11 @@
-
+#pageTitle {
+  margin-bottom: 2rem;
+  text-decoration: underline dashed rgb(144, 47, 235);
+}
 
 #createLabel {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 #createInput {
@@ -10,11 +13,18 @@
   width: 100%;
   padding: 8px 4px;
   margin-top: 0.3rem;
+  margin-bottom: 0.4rem;
   background-color: rgba(74, 74, 74, 0.61);
   color: white;
   font-size: 1rem;
   border: 0;
   border-radius: 4px;
+}
+
+.inputDescription {
+  font-size: 0.9rem;
+  padding: 6px 0;
+  color: rgb(194, 193, 193);
 }
 
 #createBtn {
