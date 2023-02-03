@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import style from '../styles/Home.module.css';
 import heroImage from '../images/hero-image.jpeg';
 import HowtoUse from './HowtoUse';
+import ExampleStories from './ExampleStories';
 export default function Home() {
   return (
     <main>
@@ -36,6 +37,8 @@ export default function Home() {
         </div>
       </section>
       <HowtoUse />
+      <hr className={style.linebreak} />
+      <ExampleStories />
     </main>
   );
 }

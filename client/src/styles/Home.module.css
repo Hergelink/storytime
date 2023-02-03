@@ -40,6 +40,12 @@
 }
 
 
+.linebreak {
+  height: 2px;
+  border: none;
+  background-color: rgba(156, 72, 234, 0.39);
+}
+
 @media only screen and (min-width: 54em) {
  
   #heroContainer {
