@@ -1,29 +1,44 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import stories from '../context/exampleStories';
 import style from '../styles/SingleStory.module.css';
 
 export default function SingleStory() {
+  const navigate = useNavigate()
   const { id } = useParams();
-  const [story, setStory] = useState();
 
-  const param = id;
+  const param = id * 1;
 
-  const currentStory = stories.filter((story) => story.id == param);
+  const currentStory = stories.filter((story) => story.id === param);
+
+
+  const handleNavigate = () => {
+    if (param === 3) {
+       navigate('/story/1')
+    } else if (param === 2) {
+      navigate('/story/3')
+    } else {
+      navigate('/story/2')
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
 
   return (
     <main className='single'>
-      {currentStory.map((story, key) => {
+      {currentStory.map((story) => {
         return (
-          <>
-            <h1 key={story.id} id={style.title}>
-              {story.title}
-            </h1>
+          <div key={story.id}>
+            <h1 id={style.title}>{story.title}</h1>
             <img src={story.photo} alt={story.title} id={style.image} />
-            <p id={style.story}>{story.story}</p>
-          </>
+            <p className={style.story}>{story.storyEntry}</p>
+            <p className={style.story}>{story.storyBody}</p>
+            <p className={style.story}>{story.storyEnd}</p>
+          </div>
         );
       })}
+
+      <button id={style.navigateButton} onClick={handleNavigate}>Next Story</button>
+      <Link to='/create' id={style.createLink}>+ Create Your Own</Link>
     </main>
   );
 }

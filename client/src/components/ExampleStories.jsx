@@ -13,7 +13,7 @@ export default function ExampleStories() {
             <div className={style.storyContainer} key={story.id}>
               <div className={style.storyInfo}>
                 <h3>{story.title}</h3>
-                <p>{story.story}</p>
+                <p>{story.storyEntry}</p>
                 <Link to={`/story/${story.id}`} className={style.storyLinks}>
                   Read Full Story
                 </Link>
