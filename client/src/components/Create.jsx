@@ -2,6 +2,7 @@ import { useState } from 'react';
 import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
 import Spinner from './Spinner';
+import headerImg from '../images/space-1.jpeg'
 
 export default function Create() {
   const [input, setInput] = useState(null);
@@ -59,6 +60,7 @@ export default function Create() {
   return (
     <main>
       <h1 id={style.pageTitle}>Create your story</h1>
+      <img src={headerImg} alt="sunny weather" id={style.headerImg}/>
       <form onSubmit={handleSubmit}>
         <label id={style.createLabel}>
           What kind of story do you want?

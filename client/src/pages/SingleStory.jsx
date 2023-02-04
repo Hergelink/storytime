@@ -30,9 +30,9 @@ export default function SingleStory() {
           <div key={story.id}>
             <h1 id={style.title}>{story.title}</h1>
             <img src={story.photo} alt={story.title} id={style.image} />
-            <p className={style.story}>{story.storyEntry}</p>
-            <p className={style.story}>{story.storyBody}</p>
-            <p className={style.story}>{story.storyEnd}</p>
+            <p className={style.text}>{story.storyEntry}</p>
+            <p className={style.text}>{story.storyBody}</p>
+            <p className={style.text}>{story.storyEnd}</p>
           </div>
         );
       })}

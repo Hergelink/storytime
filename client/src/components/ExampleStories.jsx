@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import style from '../styles/ExampleStories.module.css';
 import stories from '../context/exampleStories';
 
+const handleScroll = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export default function ExampleStories() {
   return (
     <section>
@@ -12,9 +16,13 @@ export default function ExampleStories() {
           return (
             <div className={style.storyContainer} key={story.id}>
               <div className={style.storyInfo}>
-                <h3>{story.title}</h3>
+                <h3 className={style.exampleStoryTitle}>{story.title}</h3>
                 <p>{story.storyEntry}</p>
-                <Link to={`/story/${story.id}`} className={style.storyLinks}>
+                <Link
+                  to={`/story/${story.id}`}
+                  className={style.storyLinks}
+                  onClick={handleScroll}
+                >
                   Read Full Story
                 </Link>
               </div>

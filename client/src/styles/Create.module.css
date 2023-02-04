@@ -1,6 +1,15 @@
 #pageTitle {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-decoration: underline dashed rgb(144, 47, 235);
+}
+
+#headerImg {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  
 }
 
 #createLabel {
@@ -45,9 +54,11 @@
 }
 
 @media only screen and (min-width: 38em) {
- 
   #createBtn {
     height: 60px;
   }
 
-} 
+  #headerImg {
+    height: 300px;
+  }
+}

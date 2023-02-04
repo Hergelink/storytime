@@ -4,6 +4,8 @@ import heroImage from '../images/hero-image.jpeg';
 import HowtoUse from './HowtoUse';
 import ExampleStories from './ExampleStories';
 export default function Home() {
+
+  
   return (
     <main>
       <section id={style.heroContainer}>
