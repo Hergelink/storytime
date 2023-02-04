@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header>
-      <Link to='/' id={style.siteLogo}>
+      <Link to='/' id={style.siteLogo} translate='no'>
         StoryTime
       </Link>
       <div id={style.mobileMenuBtn} onClick={toggleMobileMenu}>

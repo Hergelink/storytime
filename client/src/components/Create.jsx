@@ -70,7 +70,7 @@ export default function Create() {
           </p>
           <input
             id={style.createInput}
-            placeholder='A race story in space'
+            placeholder='Eg: A race story in space'
             type='text'
             onChange={handleInput}
           />

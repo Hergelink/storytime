@@ -28,14 +28,13 @@
   flex-direction: column;
   gap: 20px;
   text-align: center;
-  margin-inline: 2rem;
+  margin-inline: 0.5rem;
 }
 
 .storyLinks {
   color: white;
   background-color: rgb(128, 28, 222);
-  width: 40%;
-  /* width: 100%; */
+  width: 45%;
   padding: 10px;
   margin: 1rem auto;
   text-decoration: none;
