@@ -43,7 +43,7 @@ export default function OutputArea({
               <p id={style.infoText}>This process usually takes 30 seconds</p>
             </>
           ) : (
-            <h2>Your story will appear here:</h2>
+            <h3>Your story will appear here:</h3>
           )}
         </div>
       )}

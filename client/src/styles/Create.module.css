@@ -54,6 +54,12 @@
 }
 
 @media only screen and (min-width: 38em) {
+
+  #createLabel {
+    font-size: 1.4rem;
+  }
+
+
   #createBtn {
     height: 60px;
   }
