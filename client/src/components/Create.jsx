@@ -17,6 +17,8 @@ export default function Create() {
     setInput(() => e.target.value);
   };
 
+
+  // Start to implement base64 img conversion
   async function generateText() {
     setTitle('');
     setImage('');
