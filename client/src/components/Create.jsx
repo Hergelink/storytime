@@ -25,7 +25,8 @@ export default function Create() {
     setStoryEnd('');
     setLoading(true);
     try {
-      const response = await fetch('/openai/generatetext', {
+      const response = await fetch(`${process.env.REACT_APP_API_END_POINT}/openai/generatetext`, {
+        // const response = await fetch('/openai/generatetext', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

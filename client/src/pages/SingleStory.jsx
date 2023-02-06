@@ -11,6 +11,9 @@ export default function SingleStory() {
 
   const currentStory = stories.filter((story) => story.id === param);
 
+  const handleScroll = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
 
   const handleNavigate = () => {
     if (param === 3) {
@@ -20,8 +23,10 @@ export default function SingleStory() {
     } else {
       navigate('/story/2')
     }
-    window.scrollTo({top: 0, behavior: 'smooth'})
+    handleScroll()
   }
+
+  
 
   return (
     <main className='single'>
@@ -38,7 +43,7 @@ export default function SingleStory() {
       })}
 
       <button id={style.navigateButton} onClick={handleNavigate}>Next Story</button>
-      <Link to='/create' id={style.createLink}>+ Create Your Own</Link>
+      <Link to='/create' id={style.createLink} onClick={handleScroll}>+ Create Your Own</Link>
     </main>
   );
 }
