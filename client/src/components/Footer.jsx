@@ -32,6 +32,7 @@ export default function Footer() {
         <a
           href='https://github.com/Hergelink'
           target='_blank'
+          rel='noreferrer'
           id={style.devA}
           translate='no'
         >

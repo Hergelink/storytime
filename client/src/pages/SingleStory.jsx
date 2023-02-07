@@ -4,7 +4,7 @@ import stories from '../context/exampleStories';
 import style from '../styles/SingleStory.module.css';
 
 export default function SingleStory() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const param = id * 1;
@@ -12,21 +12,19 @@ export default function SingleStory() {
   const currentStory = stories.filter((story) => story.id === param);
 
   const handleScroll = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }
+    window.scrollTo({ top: '0px', behavior: 'smooth' });
+  };
 
   const handleNavigate = () => {
     if (param === 3) {
-       navigate('/story/1')
+      navigate('/story/1');
     } else if (param === 2) {
-      navigate('/story/3')
+      navigate('/story/3');
     } else {
-      navigate('/story/2')
+      navigate('/story/2');
     }
-    handleScroll()
-  }
-
-  
+    handleScroll();
+  };
 
   return (
     <main className='single'>
@@ -42,8 +40,12 @@ export default function SingleStory() {
         );
       })}
 
-      <button id={style.navigateButton} onClick={handleNavigate}>Next Story</button>
-      <Link to='/create' id={style.createLink} onClick={handleScroll}>+ Create Your Own</Link>
+      <button id={style.navigateButton} onClick={handleNavigate}>
+        Next Story
+      </button>
+      <Link to='/create' id={style.createLink} onClick={handleScroll}>
+        + Create Your Own
+      </Link>
     </main>
   );
 }
