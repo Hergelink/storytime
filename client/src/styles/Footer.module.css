@@ -5,6 +5,14 @@ footer {
   justify-content: space-between;
 }
 
+#wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
 .footerContainers {
   width: 100%;
   display: flex;
@@ -32,13 +40,15 @@ footer {
 
 .footerLinks {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin: 0 0.8rem;
   text-decoration: none;
 }
 
 #devP {
   text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 #devA {

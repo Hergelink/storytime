@@ -15,7 +15,7 @@ export default function HowtoUse() {
             src={ideaIcon}
             alt='a cloud with a lightbulb'
           />
-          <p>Think about what kind of story you would like</p>
+          <p className={style.howtoText}>Think about what kind of story you would like</p>
         </div>
         <div className={style.howtoCard}>
           <img
@@ -23,7 +23,7 @@ export default function HowtoUse() {
             src={timeIcon}
             alt='a clock indicating the passing of time'
           />
-          <p>Press the create button and wait 30 seconds</p>
+          <p className={style.howtoText}>Press the create button and wait 30 seconds</p>
         </div>
         <div className={style.howtoCard}>
           <img
@@ -31,7 +31,7 @@ export default function HowtoUse() {
             src={bookIcon}
             alt='an open book with glitters comming out of it'
           />
-          <p>Your personalized story is ready. Enjoy your read!</p>
+          <p className={style.howtoText}>Your personalized story is ready. Enjoy your read!</p>
         </div>
       </div>
     </section>

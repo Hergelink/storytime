@@ -32,11 +32,11 @@ const textGenerator = async (req, res) => {
       prompt: imagePrompt,
       n: 1,
       size: '512x512',
+      response_format: 'b64_json',
     });
 
-    const imageUrl = image.data.data[0].url;
-
-
+    // const imageUrl = image.data.data[0].url;
+    const finalImg = image.data.data[0].b64_json;
 
     // Entry Paragraph
     const description = `Write a entry paragraph for a story based on this title: ${aiOutput}`;
@@ -54,8 +54,6 @@ const textGenerator = async (req, res) => {
 
     const entryOutput = entry.data.choices[0].text.trim();
 
-    
-
     // trying body paragraph
     const storyBody = `Continue this entry paragraph with a long dialogue based story but dont finish the story: ${entryOutput}`;
 
@@ -71,7 +69,7 @@ const textGenerator = async (req, res) => {
     });
 
     const storyBodyOutput = story.data.choices[0].text.trim();
-    
+
     // trying the ending paragraph
 
     const storyEnding = `Write an ending paragraph for this story: ${storyBodyOutput}`;
@@ -89,11 +87,10 @@ const textGenerator = async (req, res) => {
 
     const storyEndOutput = storyEnd.data.choices[0].text.trim();
 
-
     // Final data to be sent to client
     const finalData = {
       aiOutput,
-      imageUrl,
+      finalImg,
       entryOutput,
       storyBodyOutput,
       storyEndOutput,

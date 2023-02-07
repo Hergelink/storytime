@@ -4,8 +4,6 @@ import heroImage from '../images/hero-image.jpeg';
 import HowtoUse from './HowtoUse';
 import ExampleStories from './ExampleStories';
 export default function Home() {
-
-  
   return (
     <main>
       <section id={style.heroContainer}>
@@ -19,18 +17,13 @@ export default function Home() {
         </div>
         <div id={style.infoContainer}>
           <div>
-            <h1 id={style.tagline}>Explore infinite new worlds</h1>
+            <h1 id={style.tagline}>Personalized stories in seconds</h1>
             <p className={style.infoContent}>
-              Welcome to Storytime, the AI-powered story generator for all ages.
-              Whether you're looking for a bedtime story for your child, or a
-              quick escape for yourself, Storytime has something for everyone.
-            </p>
-            <p className={style.infoContent}>
-              Our AI-powered technology creates unique stories tailored to your
-              interests, ensuring you'll never read the same story twice. With a
-              wide variety of themes and characters to choose from, you can
-              explore new worlds and meet exciting new characters every time you
-              read.
+              Say goodbye to boring bedtime routines and hello to captivating,
+              personalized stories crafted just for your little ones. With the
+              power of AI technology, our generator creates unique and engaging
+              tales in seconds, ensuring sweet dreams and happy kids every
+              night. Try it now and see the magic unfold!
             </p>
           </div>
           <Link to='/create' id={style.createStoryBtn}>

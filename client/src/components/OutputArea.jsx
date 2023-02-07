@@ -10,6 +10,8 @@ export default function OutputArea({
   image,
   storyEnd,
   loading,
+  errorMessage,
+  handleSubmit,
 }) {
   return (
     <>
@@ -39,8 +41,21 @@ export default function OutputArea({
         <div id={style.preOutputContainer}>
           {loading ? (
             <>
-              <h2>Your story is being generated ✍️</h2>
-              <p id={style.infoText}>This process usually takes 30 seconds</p>
+              {errorMessage ? (
+                <>
+                  <p id={style.errorText}>
+                    There was an error with the server.
+                  </p>
+                  <button id={style.tryAgainBtn} onClick={handleSubmit}>Try Again</button>
+                </>
+              ) : (
+                <>
+                  <h2>Your story is being generated ✍️</h2>
+                  <p id={style.infoText}>
+                    This process usually takes 30 seconds
+                  </p>
+                </>
+              )}
             </>
           ) : (
             <h3>Your story will appear here:</h3>

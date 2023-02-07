@@ -7,10 +7,12 @@ import headerImg from '../images/space-1.jpeg'
 export default function Create() {
   const [input, setInput] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [title, setTitle] = useState('Your story will appear here');
   const [description, setDescription] = useState('Description');
   const [storyBody, setStoryBody] = useState('Story');
-  const [image, setImage] = useState('');
+  // const [image, setImage] = useState('');
+  const [image, setImage] = useState({photo: ''});
   const [storyEnd, setStoryEnd] = useState('');
 
   const handleInput = (e) => {
@@ -20,6 +22,7 @@ export default function Create() {
 
   // Start to implement base64 img conversion
   async function generateText() {
+    setErrorMessage('');
     setTitle('');
     setImage('');
     setDescription('');
@@ -27,8 +30,9 @@ export default function Create() {
     setStoryEnd('');
     setLoading(true);
     try {
+      // const response = await fetch('/openai/generatetext', {
+
       const response = await fetch(`${process.env.REACT_APP_API_END_POINT}/openai/generatetext`, {
-        // const response = await fetch('https://storyai-ot15.onrender.com/openai/generatetext', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,14 +47,16 @@ export default function Create() {
       }
 
       const returnedData = await response.json();
-      setImage(returnedData.data.imageUrl);
+      setImage(`data:image/jpeg;base64, ${returnedData.data.finalImg}`);
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
       setStoryBody(returnedData.data.storyBodyOutput);
       setStoryEnd(returnedData.data.storyEndOutput);
+      
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setErrorMessage(error)
     }
   }
 
@@ -94,6 +100,8 @@ export default function Create() {
         image={image}
         storyEnd={storyEnd}
         loading={loading}
+        errorMessage= {errorMessage}
+        handleSubmit={handleSubmit}
       />
     </main>
   );

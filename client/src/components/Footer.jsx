@@ -10,20 +10,20 @@ export default function Footer() {
           <Link to='/' id={style.footerLogo} translate='no'>
             StoryTime&trade;
           </Link>
-          <p>Explore infinite new worlds</p>
+          <p>Create your unique stories in seconds</p>
         </div>
         <div className={style.footerContainers}>
           <h3 className={style.footerTitles}>Links</h3>
           <div id={style.footerLinksContainer}>
-          <Link to='/' className={style.footerLinks}>
-            Home
-          </Link>
-          <Link to='/create' className={style.footerLinks}>
-            + Create
-          </Link>
-          <Link to='/login' className={style.footerLinks}>
-            Login
-          </Link>
+            <Link to='/' className={style.footerLinks}>
+              Home
+            </Link>
+            <Link to='/create' className={style.footerLinks}>
+              + Create
+            </Link>
+            <Link to='/login' className={style.footerLinks}>
+              Login
+            </Link>
           </div>
         </div>
       </div>
