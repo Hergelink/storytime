@@ -6,6 +6,7 @@ import headerImg from '../images/space-1.jpeg'
 
 export default function Create() {
   const [input, setInput] = useState(null);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [title, setTitle] = useState('Your story will appear here');
@@ -16,6 +17,7 @@ export default function Create() {
 
   const handleInput = (e) => {
     setInput(() => e.target.value);
+    e.target.value.length > 0 ? setButtonDisabled(false) : setButtonDisabled(true);
   };
 
 
@@ -88,7 +90,7 @@ export default function Create() {
           **Avoid harmful language as it may be flagged and result in loss of
           credits.
         </p>
-        <button id={style.createBtn} type='submit'>
+        <button id={style.createBtn} type='submit' disabled={buttonDisabled} className={buttonDisabled ? `${style.disabled}` : `${style.enabled}`}>
           {loading ? <Spinner /> : 'Create Story'}
         </button>
       </form>
