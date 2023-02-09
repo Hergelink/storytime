@@ -83,6 +83,7 @@ export default function Create() {
             placeholder='Eg: A race story in space'
             type='text'
             onChange={handleInput}
+            className={style.pulsingOn}
           />
         </label>
 

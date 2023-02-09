@@ -31,6 +31,10 @@
   margin-inline: 0.5rem;
 }
 
+.exampleStoryTitle::first-letter {
+  font-size: 1.6rem;
+}
+
 .storyLinks {
   color: white;
   background-color: rgb(128, 28, 222);
@@ -78,6 +82,8 @@
   .exampleStoryTitle {
     width: 70%;
   }
+
+  
 
   .storyLinks {
     color: white;
