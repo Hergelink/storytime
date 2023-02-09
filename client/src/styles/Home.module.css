@@ -24,6 +24,13 @@
   line-height: 99%;
 }
 
+#tagline span {
+  background-image: linear-gradient(90deg,white,rgb(128, 28, 222));
+  /* background-image: linear-gradient(35deg,white,rgb(128, 28, 222)); */
+  background-clip: text;
+  color: transparent;
+}
+
 .infoContent {
   padding: 1rem 0px;
   font-size: 1.1rem;

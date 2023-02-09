@@ -23,7 +23,7 @@ export default function Home() {
         </div>
         <div id={style.infoContainer}>
           <div>
-            <h1 id={style.tagline}>Personalized stories in seconds</h1>
+            <h1 id={style.tagline}>Personalized stories in <span>seconds</span></h1>
             <p className={style.infoContent}>
               Say goodbye to boring bedtime routines and hello to captivating,
               personalized stories crafted just for your little ones. With the
