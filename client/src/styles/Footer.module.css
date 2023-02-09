@@ -22,15 +22,16 @@ footer {
   margin-bottom: 2rem;
 }
 
+.footerContainers p {
+  color: rgb(221, 220, 220);
+  font-size: 1.1rem;
+}
+
 #footerLogo {
   font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
   color: white;
-}
-
-#footerLogo:hover {
-  text-decoration: underline dashed rgb(128, 28, 222);
 }
 
 .footerTitles {
