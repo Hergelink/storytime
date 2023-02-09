@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import stories from '../context/exampleStories';
 import style from '../styles/SingleStory.module.css';
@@ -11,6 +11,10 @@ export default function SingleStory() {
 
   const currentStory = stories.filter((story) => story.id === param);
 
+  useEffect(() => {
+    handleScroll()
+  }, [])
+  
   const handleScroll = () => {
     window.scrollTo({ top: '0px', behavior: 'smooth' });
   };
