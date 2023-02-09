@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import style from '../styles/Footer.module.css';
 
 export default function Footer() {
+  const handleScroll = () => {
+    const element = document.querySelector('header');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <footer>
       <div id={style.wrapper}>
         <div className={style.footerContainers}>
-          <Link to='/' id={style.footerLogo} translate='no'>
+          <Link to='/' id={style.footerLogo} translate='no' onClick={handleScroll}>
             StoryTime&trade;
           </Link>
           <p>Create your unique stories in seconds.</p>
@@ -15,13 +21,13 @@ export default function Footer() {
         <div className={style.footerContainers}>
           <h3 className={style.footerTitles}>Links</h3>
           <div id={style.footerLinksContainer}>
-            <Link to='/' className={style.footerLinks}>
+            <Link to='/' className={style.footerLinks} onClick={handleScroll}>
               Home
             </Link>
-            <Link to='/create' className={style.footerLinks}>
+            <Link to='/create' className={style.footerLinks} onClick={handleScroll}>
               Create
             </Link>
-            <Link to='/login' className={style.footerLinks}>
+            <Link to='/login' className={style.footerLinks} onClick={handleScroll}>
               Login
             </Link>
           </div>

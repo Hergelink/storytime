@@ -4,7 +4,10 @@ import style from '../styles/ExampleStories.module.css';
 import stories from '../context/exampleStories';
 
 const handleScroll = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const element = document.querySelector('header');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
 };
 
 export default function ExampleStories() {

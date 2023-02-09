@@ -4,6 +4,12 @@ import heroImage from '../images/hero-image.jpeg';
 import HowtoUse from './HowtoUse';
 import ExampleStories from './ExampleStories';
 export default function Home() {
+  const handleScroll = () => {
+    const element = document.querySelector('header');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <main>
       <section id={style.heroContainer}>
@@ -26,7 +32,7 @@ export default function Home() {
               night. Try it now and see the magic unfold!
             </p>
           </div>
-          <Link to='/create' id={style.createStoryBtn}>
+          <Link to='/create' id={style.createStoryBtn} onClick={handleScroll}>
             + Create Your Story
           </Link>
         </div>
