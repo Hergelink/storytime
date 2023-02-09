@@ -1,5 +1,3 @@
-
-
 #heroContainer {
   display: flex;
   flex-direction: column;
@@ -10,7 +8,6 @@
   width: 100%;
   border-radius: 8px;
 }
-
 
 #infoContainer {
   display: flex;
@@ -25,8 +22,7 @@
 }
 
 #tagline span {
-  background-image: linear-gradient(90deg,white,rgb(128, 28, 222));
-  /* background-image: linear-gradient(35deg,white,rgb(128, 28, 222)); */
+  background-image: linear-gradient(90deg, white, rgb(128, 28, 222));
   background-clip: text;
   color: transparent;
 }
@@ -51,6 +47,9 @@
   font-weight: 700;
 }
 
+#createStoryBtn:hover {
+  background-color: rgb(144, 47, 235);
+}
 
 .linebreak {
   height: 2px;
@@ -59,24 +58,20 @@
 }
 
 @media only screen and (min-width: 54em) {
- 
   #heroContainer {
     flex-direction: row;
   }
 
-
   #imageContainer {
     width: 45%;
   }
-  
+
   #heroImg {
     width: 100%;
- 
   }
-  
+
   #infoContainer {
     width: 55%;
-   
   }
 
   #tagline {
@@ -87,6 +82,4 @@
     font-size: 1.2rem;
     text-align: left;
   }
-
-
 }

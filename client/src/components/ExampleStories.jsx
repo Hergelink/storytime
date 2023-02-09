@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import style from '../styles/ExampleStories.module.css';
 import stories from '../context/exampleStories';
 
-const handleScroll = () => {
-  const element = document.querySelector('header');
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-export default function ExampleStories() {
+export default function ExampleStories({ handleScroll }) {
   return (
     <section>
       <h2 id={style.exampleTitle}>Example Stories</h2>

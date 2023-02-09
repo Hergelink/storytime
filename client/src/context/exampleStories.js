@@ -1,6 +1,6 @@
-import sharkImg from '../images/shark-story.png';
-import spaceImg from '../images/space-story.jpeg';
-import dogImg from '../images/dog-story.png';
+import sharkImg from '../images/shark-story.webp';
+import spaceImg from '../images/space-story.webp';
+import dogImg from '../images/dog-story.webp';
 
 const exampleStories = [
   {

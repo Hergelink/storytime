@@ -2,7 +2,7 @@ import { useState } from 'react';
 import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
 import Spinner from './Spinner';
-import headerImg from '../images/space-1.jpeg'
+import headerImg from '../images/space-1.webp'
 
 export default function Create() {
   const [input, setInput] = useState(null);

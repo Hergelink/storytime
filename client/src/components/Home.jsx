@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import style from '../styles/Home.module.css';
-import heroImage from '../images/hero-image.jpeg';
+import heroImage from '../images/hero-image.webp';
 import HowtoUse from './HowtoUse';
 import ExampleStories from './ExampleStories';
 export default function Home() {
@@ -39,7 +39,7 @@ export default function Home() {
       </section>
       <HowtoUse />
       <hr className={style.linebreak} />
-      <ExampleStories />
+      <ExampleStories handleScroll={handleScroll}/>
     </main>
   );
 }
