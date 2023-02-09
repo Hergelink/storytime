@@ -11,8 +11,7 @@ export default function Create() {
   const [title, setTitle] = useState('Your story will appear here');
   const [description, setDescription] = useState('Description');
   const [storyBody, setStoryBody] = useState('Story');
-  // const [image, setImage] = useState('');
-  const [image, setImage] = useState({photo: ''});
+  const [image, setImage] = useState('');
   const [storyEnd, setStoryEnd] = useState('');
 
   const handleInput = (e) => {

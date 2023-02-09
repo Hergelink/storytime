@@ -10,7 +10,7 @@ export default function Footer() {
           <Link to='/' id={style.footerLogo} translate='no'>
             StoryTime&trade;
           </Link>
-          <p>Create your unique stories in seconds</p>
+          <p>Create your unique stories in seconds.</p>
         </div>
         <div className={style.footerContainers}>
           <h3 className={style.footerTitles}>Links</h3>
@@ -19,7 +19,7 @@ export default function Footer() {
               Home
             </Link>
             <Link to='/create' className={style.footerLinks}>
-              + Create
+              Create
             </Link>
             <Link to='/login' className={style.footerLinks}>
               Login

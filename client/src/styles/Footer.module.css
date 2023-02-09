@@ -1,5 +1,5 @@
 footer {
-  padding: 1rem 1rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,7 +7,7 @@ footer {
 
 #wrapper {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
@@ -17,7 +17,7 @@ footer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   gap: 10px;
   margin-bottom: 2rem;
 }
@@ -34,19 +34,26 @@ footer {
 }
 
 .footerTitles {
-  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  font-size: 2.2rem;
   text-decoration: underline dashed rgb(128, 28, 222);
+}
+
+#footerLinksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .footerLinks {
   color: white;
   font-size: 1.3rem;
-  margin: 0 0.8rem;
+  margin: 0 0.3rem;
   text-decoration: none;
 }
 
 #devP {
-  text-align: center;
+  /* text-align: center; */
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
@@ -62,15 +69,12 @@ footer {
 
   #wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
     justify-content: flex-start;
   }
 
-
-  .footerContainers {
-    /* width: fit-content; */
-    width: 36%;
-  }
+ 
 
   
 

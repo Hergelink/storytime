@@ -52,7 +52,7 @@ export default function OutputArea({
                 <>
                   <h2>Your story is being generated ✍️</h2>
                   <p id={style.infoText}>
-                    This process usually takes 30 seconds
+                    This process usually takes 30 to 60 seconds
                   </p>
                 </>
               )}
