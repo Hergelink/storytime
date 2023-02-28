@@ -1,8 +1,5 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { UserContextProvider } from './components/UserContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
@@ -42,12 +39,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-
-
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <UserContextProvider>
+        <RouterProvider router={router} />
+      </UserContextProvider>
     </>
   );
 }
