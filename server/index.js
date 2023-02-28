@@ -22,4 +22,4 @@ app.use('/openai', require('./routes/openaiRoutes'));
 
 
 
-  // mongodb+srv://enver:ZEZcfByynf15Bp5R@cluster0.ypcmtju.mongodb.net/?retryWrites=true&w=majority
+  
