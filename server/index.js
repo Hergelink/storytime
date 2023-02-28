@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 const dotenv = require('dotenv').config({ path: './server/.env' });
 const mongoose = require('mongoose');
 const User = require('./models/User');
@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const salt = bcrypt.genSaltSync(10);
-const secret = 'asdasdfsdf34k2k234k2j34jk';
+const secret = 'asdasdf#$sdf@#34k2k#234k*)2j%34jk';
 
-// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -83,19 +83,38 @@ app.post('/login', async (req, res) => {
   }
 });
 
+// the below get request is found false by gpt3
+// app.get('/profile', (req, res) => {
+//   const { token } = req.cookies;
+//   jwt.verify(token, secret, {}, (err, info) => {
+//     if (err) throw err;
+//     res.json(info);
+//   });
+// });
+
 app.get('/profile', (req, res) => {
   const { token } = req.cookies;
-  jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
-    res.json(info);
-  });
-  // deleted by gpt3 below
-  // res.json(req.cookies);
+  try {
+    const decoded = jwt.verify(token, secret);
+    res.json(decoded);
+  } catch (err) {
+    if (err.name === 'TokenExpiredError') {
+      res.status(403).json({ message: 'Token expired' });
+    } else {
+      res.status(401).json({ message: 'Invalid token' });
+    }
+  }
 });
 
 app.post('/logout', (req, res) => {
   res.cookie('token', '').json('ok');
 });
+
+// health check for render
+app.get('/health', (req, res) => {
+  res.sendStatus(200);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
