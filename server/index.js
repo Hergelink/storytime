@@ -19,3 +19,7 @@ app.use('/openai', require('./routes/openaiRoutes'));
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });
+
+
+
+  // mongodb+srv://enver:ZEZcfByynf15Bp5R@cluster0.ypcmtju.mongodb.net/?retryWrites=true&w=majority
