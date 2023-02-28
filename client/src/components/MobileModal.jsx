@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import style from '../styles/Header.module.css';
 
-export default function MobileModal({ toggleMobileMenu }) {
+export default function MobileModal({ toggleMobileMenu, logout, userEmail }) {
   const handleScroll = () => {
     const element = document.querySelector('header');
     if (element) {
@@ -34,9 +34,13 @@ export default function MobileModal({ toggleMobileMenu }) {
         <Link to='/create' className={style.mobileLinks} onClick={handleClick}>
           + Create
         </Link>
-        <Link to='/login' id={style.mobileLoginBtn} onClick={handleClick}>
-          Login
-        </Link>
+        {userEmail ? (
+          <button onClick={logout} id={style.logoutBtn}>Logout</button>
+        ) : (
+          <Link to='/login' id={style.loginBtn}>
+            Login
+          </Link>
+        )}
       </nav>
     </div>
   );

@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const dotenv = require('dotenv').config({ path: './server/.env' });
 const mongoose = require('mongoose');
 const User = require('./models/User');
@@ -15,7 +15,7 @@ const app = express();
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdasdfsdf34k2k234k2j34jk';
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -37,30 +37,64 @@ app.post('/register', async (req, res) => {
     res.json(userDoc);
   } catch (e) {
     res.status(400).json(e);
-    
   }
 });
+
+// app.post('/login', async (req, res) => {
+//   const { email, password } = req.body;
+//   const userDoc = await User.findOne({ email });
+//   const passOk = bcrypt.compareSync(password, userDoc.password);
+
+//   if (passOk) {
+//     //Logged in
+//     jwt.sign({ email, id: userDoc._id }, secret, {}, (err, token) => {
+//       if (err) throw err;
+//       res.cookie('token', token).json({
+//         id: userDoc._id,
+//         email,
+//       });
+//     });
+//   } else {
+//     res.status(400).json('wrong credentials');
+
+//   }
+// });
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const userDoc = await User.findOne({ email });
-  const passOk = bcrypt.compareSync(password, userDoc.password);
 
-  if (passOk) {
-    //Logged in
-    jwt.sign({ email, id: userDoc._id }, secret, {}, (err, token) => {
-      if (err) throw err;
-      res.cookie('token', token).json({
-        id: userDoc._id,
-        email,
+  if (userDoc) {
+    const passOk = bcrypt.compareSync(password, userDoc.password);
+    if (passOk) {
+      //Logged in
+      jwt.sign({ email, id: userDoc._id }, secret, {}, (err, token) => {
+        if (err) throw err;
+        res.cookie('token', token).json({
+          id: userDoc._id,
+          email,
+        });
       });
-    });
-    res.status(200);
-    // res.json()
+    } else {
+      res.status(400).json('wrong credentials');
+    }
   } else {
-    res.status(400).json('wrong credentials');
-    
+    res.status(400).json('user not found');
   }
+});
+
+app.get('/profile', (req, res) => {
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, (err, info) => {
+    if (err) throw err;
+    res.json(info);
+  });
+  // deleted by gpt3 below
+  // res.json(req.cookies);
+});
+
+app.post('/logout', (req, res) => {
+  res.cookie('token', '').json('ok');
 });
 
 app.listen(PORT, () => {

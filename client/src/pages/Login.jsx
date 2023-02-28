@@ -8,6 +8,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
+  const [alert, setAlert] = useState(false);
   const { setUserInfo } = useContext(UserContext);
 
   async function login(e) {
@@ -25,7 +26,8 @@ export default function Login() {
         setRedirect(true);
       });
     } else {
-      alert('wrong credentials');
+      // alert('wrong credentials');
+      setAlert(true);
     }
   }
 
@@ -56,6 +58,7 @@ export default function Login() {
         />
         <button id={style.loginButton}>Login</button>
         {/* <p id={style.errorP}>This is an error!</p> */}
+        <p id={style.errorP}>{alert ? 'Incorrect email or password' : null}</p>
         <span id={style.loginSpan}>
           Don't you have an account?
           <Link to='/register' id={style.loginA}>
