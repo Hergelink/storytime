@@ -8,6 +8,7 @@ import Home from './components/Home';
 import SingleStory from './pages/SingleStory';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Stories from './components/Stories';
 
 const Layout = () => {
   return (
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/create', element: <Create /> },
       { path: '/story/:id', element: <SingleStory /> },
+      { path: '/stories', element: <Stories /> },
     ],
   },
   {

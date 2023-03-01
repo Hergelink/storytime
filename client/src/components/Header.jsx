@@ -49,6 +49,9 @@ export default function Header() {
         <Link to='/' className={style.desktopLinks}>
           Home
         </Link>
+        <Link to='/stories' className={style.desktopLinks}>
+          Stories
+        </Link>
         <Link to='/create' className={style.desktopLinks}>
           + Create
         </Link>

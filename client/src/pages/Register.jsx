@@ -4,6 +4,7 @@ import style from '../styles/LoginRegister.module.css';
 import { Link } from 'react-router-dom';
 
 export default function Register() {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
@@ -13,7 +14,7 @@ export default function Register() {
 
     const response = await fetch('http://localhost:3001/register', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.status === 200) {
@@ -32,6 +33,14 @@ export default function Register() {
     <div className={style.auth}>
       <h1 id={style.registerTitle}>Register</h1>
       <form id={style.registerForm} onSubmit={register}>
+      <input
+          className={style.registerInput}
+          required
+          type='text'
+          placeholder='Username'
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <input
           className={style.registerInput}
           required

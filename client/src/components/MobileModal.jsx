@@ -31,6 +31,9 @@ export default function MobileModal({ toggleMobileMenu, logout, userEmail }) {
         <Link to='/' className={style.mobileLinks} onClick={handleClick}>
           Home
         </Link>
+        <Link to='/stories' className={style.mobileLinks} onClick={handleClick}>
+          Stories
+        </Link>
         <Link to='/create' className={style.mobileLinks} onClick={handleClick}>
           + Create
         </Link>
