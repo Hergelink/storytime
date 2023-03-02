@@ -2,7 +2,7 @@ import { useState } from 'react';
 import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
 import Spinner from './Spinner';
-import headerImg from '../images/space-1.webp'
+import headerImg from '../images/space-1.webp';
 
 export default function Create() {
   const [input, setInput] = useState(null);
@@ -17,9 +17,10 @@ export default function Create() {
 
   const handleInput = (e) => {
     setInput(() => e.target.value);
-    e.target.value.length > 0 ? setButtonDisabled(false) : setButtonDisabled(true);
+    e.target.value.length > 0
+      ? setButtonDisabled(false)
+      : setButtonDisabled(true);
   };
-
 
   // Start to implement base64 img conversion
   async function generateText() {
@@ -31,33 +32,36 @@ export default function Create() {
     setStoryEnd('');
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3001/openai/generatetext', {
-
-      // const response = await fetch(`${process.env.REACT_APP_API_END_POINT}/openai/generatetext`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          input,
-        }),
-      });
+      const response = await fetch(
+        'http://localhost:3001/openai/generatetext',
+        {
+          // const response = await fetch(`${process.env.REACT_APP_API_END_POINT}/openai/generatetext`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            input,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error('prompt could not be generated');
       }
 
       const returnedData = await response.json();
-      setImage(`data:image/jpeg;base64, ${returnedData.data.finalImg}`);
+      // setImage(`data:image/jpeg;base64, ${returnedData.data.finalImg}`);
+      setImage(returnedData.data.imageUrl);
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
       setStoryBody(returnedData.data.storyBodyOutput);
       setStoryEnd(returnedData.data.storyEndOutput);
-      
+
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setErrorMessage(error)
+      setErrorMessage(error);
     }
   }
 
@@ -70,7 +74,7 @@ export default function Create() {
   return (
     <main>
       <h1 id={style.pageTitle}>Create your story</h1>
-      <img src={headerImg} alt="sunny weather" id={style.headerImg}/>
+      <img src={headerImg} alt='sunny weather' id={style.headerImg} />
       <form onSubmit={handleSubmit}>
         <label id={style.createLabel}>
           What kind of story do you want?
@@ -91,7 +95,12 @@ export default function Create() {
           **Avoid harmful language as it may be flagged and result in loss of
           credits.
         </p>
-        <button id={style.createBtn} type='submit' disabled={buttonDisabled} className={buttonDisabled ? `${style.disabled}` : `${style.enabled}`}>
+        <button
+          id={style.createBtn}
+          type='submit'
+          disabled={buttonDisabled}
+          className={buttonDisabled ? `${style.disabled}` : `${style.enabled}`}
+        >
           {loading ? <Spinner /> : 'Create Story'}
         </button>
       </form>
@@ -102,7 +111,7 @@ export default function Create() {
         image={image}
         storyEnd={storyEnd}
         loading={loading}
-        errorMessage= {errorMessage}
+        errorMessage={errorMessage}
         handleSubmit={handleSubmit}
       />
     </main>

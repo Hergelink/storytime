@@ -32,11 +32,12 @@ const textGenerator = async (req, res) => {
       prompt: imagePrompt,
       n: 1,
       size: '512x512',
-      response_format: 'b64_json',
+      // response_format: 'b64_json',
     });
 
-    // const imageUrl = image.data.data[0].url;
-    const finalImg = image.data.data[0].b64_json;
+    const imageUrl = image.data.data[0].url;
+    // const finalImg = image.data.data[0].b64_json;
+    // const finalImg = image.data.data[0].url;
 
     // Entry Paragraph
     const description = `Write a entry paragraph for a story based on this title: ${aiOutput}`;
@@ -90,7 +91,8 @@ const textGenerator = async (req, res) => {
     // Final data to be sent to client
     const finalData = {
       aiOutput,
-      finalImg,
+      imageUrl,
+      // finalImg,
       entryOutput,
       storyBodyOutput,
       storyEndOutput,

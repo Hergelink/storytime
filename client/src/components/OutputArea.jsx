@@ -3,8 +3,8 @@ import { Navigate } from 'react-router';
 import style from '../styles/OutputArea.module.css';
 import PdfFile from './PdfFile';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import Jimp from 'jimp';
-import { read, MIME_JPEG } from 'jimp'
+
+
 
 export default function OutputArea({
   title,
@@ -16,20 +16,23 @@ export default function OutputArea({
   errorMessage,
   handleSubmit,
 }) {
+
   const [redirect, setRedirect] = useState(false);
 
+ 
+
   const createNewStory = async () => {
+
+   
+    
+
     const data = new FormData();
     data.append('title', title);
     data.append('description', description);
     data.append('storyBody', storyBody);
     data.append('storyEnd', storyEnd);
 
-    const imageBuffer = Buffer.from(image.split(';base64,').pop(), 'base64');
-    const convertedImage = await Jimp.read(imageBuffer);
-    convertedImage.quality(60);
-    const convertedImageBuffer = await convertedImage.getBufferAsync(Jimp.MIME_JPEG);
-    data.append('image', convertedImageBuffer, { filename: `${title}.jpg` });
+   
 
     const response = await fetch('http://localhost:3001/post', {
       method: 'POST',
