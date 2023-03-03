@@ -12,11 +12,15 @@ export default function Register() {
   const register = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:3001/register', {
-      method: 'POST',
-      body: JSON.stringify({ username, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_END_POINT}/register`,
+      {
+        // const response = await fetch('http://localhost:3001/register', {
+        method: 'POST',
+        body: JSON.stringify({ username, email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
     if (response.status === 200) {
       alert('Registration Succesful');
       setRedirect(true);
@@ -33,7 +37,7 @@ export default function Register() {
     <div className={style.auth}>
       <h1 id={style.registerTitle}>Register</h1>
       <form id={style.registerForm} onSubmit={register}>
-      <input
+        <input
           className={style.registerInput}
           required
           type='text'

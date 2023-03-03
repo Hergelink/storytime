@@ -9,7 +9,8 @@ export default function Header() {
   const [menuState, setMenuState] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3001/profile', {
+    fetch(`${process.env.REACT_APP_API_END_POINT}/profile`, {
+      // fetch('http://localhost:3001/profile', {
       credentials: 'include',
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -43,7 +44,15 @@ export default function Header() {
         <span className={style.hamburger}></span>
       </div>
 
-      {menuState ? <MobileModal toggleMobileMenu={toggleMobileMenu} userEmail={userEmail} logout={logout} /> : ''}
+      {menuState ? (
+        <MobileModal
+          toggleMobileMenu={toggleMobileMenu}
+          userEmail={userEmail}
+          logout={logout}
+        />
+      ) : (
+        ''
+      )}
 
       <nav id={style.desktopNavContainer}>
         <Link to='/' className={style.desktopLinks}>
@@ -56,7 +65,9 @@ export default function Header() {
           + Create
         </Link>
         {userEmail ? (
-          <button onClick={logout} id={style.logoutBtn}>Logout</button>
+          <button onClick={logout} id={style.logoutBtn}>
+            Logout
+          </button>
         ) : (
           <Link to='/login' id={style.loginBtn}>
             Login

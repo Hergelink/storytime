@@ -20,7 +20,8 @@ export default function StoryCard({
     <div className={style.storyContainer}>
       <div className={style.imageContainer}>
         <img
-          src={`http://localhost:3001${formattedImageUrl}`}
+          src={`${process.env.REACT_APP_API_END_POINT}${formattedImageUrl}`}
+          // src={`http://localhost:3001${formattedImageUrl}`}
           alt={`a description of ${title}`}
         />
       </div>
@@ -31,10 +32,17 @@ export default function StoryCard({
           <div id='showAllTextDiv'>
             <p>{storyBody}</p>
             <p>{storyEnd}</p>
-            <button onClick={handleStoryDisplay} className={style.closeDisplayBtn}>Minimize Story</button>
+            <button
+              onClick={handleStoryDisplay}
+              className={style.closeDisplayBtn}
+            >
+              Minimize Story
+            </button>
           </div>
         ) : (
-          <button onClick={handleStoryDisplay} className={style.openDisplayBtn}>Continue Reading...</button>
+          <button onClick={handleStoryDisplay} className={style.openDisplayBtn}>
+            Continue Reading...
+          </button>
         )}
       </div>
     </div>

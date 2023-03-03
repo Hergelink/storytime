@@ -25,14 +25,18 @@ export default function OutputArea({
       image,
     };
 
-    const response = await fetch('http://localhost:3001/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-      credentials: 'include',
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_END_POINT}/post`,
+      {
+        // const response = await fetch('http://localhost:3001/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
+      }
+    );
 
     if (response.ok) {
       setRedirect(true);
