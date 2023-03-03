@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import StoryCard from './StoryCard';
-import style from '../styles/Stories.module.css'
+import style from '../styles/Stories.module.css';
 
 export default function Stories() {
   const [stories, setStories] = useState([]);
@@ -14,11 +15,16 @@ export default function Stories() {
 
   return (
     <main>
-      <h1 id={style.pageTitle}>Generated Stories</h1>
-      {stories.length > 0 ?
-        (stories.map((story) => {
+      <h1 id={style.pageTitle}>Latest Stories</h1>
+      {stories.length > 0 ? (
+        stories.map((story) => {
           return <StoryCard {...story} key={story._id} />;
-        })) : <p id={style.zeroStoryMessage}>There are no stories</p>}
+        })
+      ) : (
+        <p id={style.zeroStoryMessage}>There are no stories</p>
+      )}
+      <h3 id={style.callToAction}>Don't just read,<br /> <span>create your own!</span></h3>
+      <Link to='/create' id={style.linkToCreatePage}>+ Create your Story</Link>
     </main>
   );
 }
