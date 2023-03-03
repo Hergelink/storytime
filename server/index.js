@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 // mongoose.connect(process.env.DATABASE_CONNECT);
 mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.ypcmtju.mongodb.net/?retryWrites=true&w=majority`)
-
+// added waitlist ip address
 
 // Have Node serve the files for our built React app
 // app.use(express.static(path.resolve(__dirname, '../client/build')));
