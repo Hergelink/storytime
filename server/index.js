@@ -29,7 +29,8 @@ app.use(cookieParser());
 mongoose.connect(process.env.DATABASE_CONNECT);
 
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use('/openai', require('./routes/openaiRoutes'));
 
@@ -107,14 +108,10 @@ app.post('/post', async (req, res) => {
         url: image,
         responseType: 'stream',
       });
-      const cleanTitle = title
-        .replace(/[^\w\s]/gi, '')
-        .replace(/\s+/g, '_')
-        // .replace('_', '');
+      const cleanTitle = title.replace(/[^\w\s]/gi, '').replace(/\s+/g, '_');
+      // .replace('_', '');
       const imagePath = `./server/uploads/${cleanTitle}.jpg`;
       response.data.pipe(fs.createWriteStream(imagePath));
-      
-      
 
       const storyDoc = await Story.create({
         title,
@@ -134,9 +131,7 @@ app.post('/post', async (req, res) => {
 });
 
 app.get('/post', async (req, res) => {
-  // const posts = await Post.find();
-  // res.json(posts);
-  res.json(await Story.find());
+  res.json(await Story.find().sort({ createdAt: -1 }).limit(20));
 });
 
 app.listen(PORT, () => {

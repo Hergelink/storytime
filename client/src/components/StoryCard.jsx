@@ -1,16 +1,16 @@
-import React from 'react'
-import style from '../styles/Stories.module.css'
+import React from 'react';
+import style from '../styles/Stories.module.css';
 
-export default function StoryCard({image, title, description}) {
-    const editedTitle = title.replace(/"/g, '')
+export default function StoryCard({ image, title, description }) {
+  const editedTitle = title.replace(/"/g, '');
 
-    console.log(image)
+  const formattedImageUrl = image.replace('./server', '');
 
   return (
     <div className={style.storyContainer}>
       <div className={style.imageContainer}>
         <img
-          src={image}
+          src={`http://localhost:3001${formattedImageUrl}`}
           alt={`a description of ${title}`}
         />
       </div>
@@ -19,5 +19,5 @@ export default function StoryCard({image, title, description}) {
         <p className='summary'>{description}</p>
       </div>
     </div>
-  )
+  );
 }
