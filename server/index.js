@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
+const axios = require('axios');
 
 const PORT = process.env.PORT || 3001;
 
@@ -45,25 +46,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// app.post('/login', async (req, res) => {
-//   const { email, password } = req.body;
-//   const userDoc = await User.findOne({ email });
-//   const passOk = bcrypt.compareSync(password, userDoc.password);
-
-//   if (passOk) {
-//     //Logged in
-//     jwt.sign({ email, id: userDoc._id }, secret, {}, (err, token) => {
-//       if (err) throw err;
-//       res.cookie('token', token).json({
-//         id: userDoc._id,
-//         email,
-//       });
-//     });
-//   } else {
-//     res.status(400).json('wrong credentials');
-
-//   }
-// });
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -88,14 +70,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// the below get request is found false by gpt3
-// app.get('/profile', (req, res) => {
-//   const { token } = req.cookies;
-//   jwt.verify(token, secret, {}, (err, info) => {
-//     if (err) throw err;
-//     res.json(info);
-//   });
-// });
+
 
 app.get('/profile', (req, res) => {
   const { token } = req.cookies;
@@ -146,16 +121,26 @@ app.post('/post', async (req, res) => {
     if (err) throw err;
 
     try {
-      const { title, description, storyBody, storyEnd, convertedImageBuffer } = req.body;
+      const { title, description, storyBody, storyEnd, image } = req.body;
+     
 
-      console.log(title, description, storyBody, storyEnd, convertedImageBuffer);
+      console.log(title, description, storyBody, storyEnd, image);
+
+      const response = await axios({
+        method: 'get',
+        url: image,
+        responseType: 'stream'
+      });
+      const imagePath = `uploads/${title}.jpg`;
+      response.data.pipe(fs.createWriteStream(imagePath));
+
 
       const storyDoc = await Story.create({
         title,
         description,
         storyBody,
         storyEnd,
-        convertedImageBuffer,
+        image: imagePath,
         author: info.id,
       });
 

@@ -4,8 +4,6 @@ import style from '../styles/OutputArea.module.css';
 import PdfFile from './PdfFile';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
-
-
 export default function OutputArea({
   title,
   description,
@@ -16,27 +14,30 @@ export default function OutputArea({
   errorMessage,
   handleSubmit,
 }) {
-
   const [redirect, setRedirect] = useState(false);
 
- 
-
   const createNewStory = async () => {
+    const data = {
+      title,
+      description,
+      storyBody,
+      storyEnd,
+      image,
+    };
 
-   
-    
-
-    const data = new FormData();
-    data.append('title', title);
-    data.append('description', description);
-    data.append('storyBody', storyBody);
-    data.append('storyEnd', storyEnd);
-
-   
+    // const data = new FormData();
+    // data.append('title', title);
+    // data.append('description', description);
+    // data.append('storyBody', storyBody);
+    // data.append('storyEnd', storyEnd);
+    // data.append('image', image);
 
     const response = await fetch('http://localhost:3001/post', {
       method: 'POST',
-      body: data,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
       credentials: 'include',
     });
 
