@@ -34,7 +34,8 @@
   text-align: center;
 }
 
-#createStoryBtn {
+.createStoryBtn,
+.createStoryBtnBottom {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +56,20 @@
   height: 2px;
   border: none;
   background-color: rgba(156, 72, 234, 0.39);
+}
+
+#callToActionDiv {
+  margin: 5rem 0;
+}
+
+#callToAction {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+#callToAction span {
+  text-decoration: underline rgba(209, 163, 252, 0.807) wavy;
 }
 
 @media only screen and (min-width: 54em) {
@@ -81,5 +96,14 @@
   .infoContent {
     font-size: 1.2rem;
     text-align: left;
+  }
+
+  .createStoryBtnBottom {
+    width: 600px;
+    margin-inline: auto;
+  }
+
+  #callToActionDiv {
+    margin: 8rem 0;
   }
 }

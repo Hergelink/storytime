@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import style from '../styles/LoginRegister.module.css';
 import { Link } from 'react-router-dom';
 

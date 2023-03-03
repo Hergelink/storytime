@@ -13,6 +13,13 @@ export default function Stories() {
     });
   }, []);
 
+  const handleScroll = () => {
+    const element = document.querySelector('header');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <main>
       <h1 id={style.pageTitle}>Latest Stories</h1>
@@ -21,10 +28,17 @@ export default function Stories() {
           return <StoryCard {...story} key={story._id} />;
         })
       ) : (
-        <p id={style.zeroStoryMessage}>There are no stories</p>
+        <p id={style.zeroStoryMessage}>There are 0 stories</p>
       )}
-      <h3 id={style.callToAction}>Don't just read,<br /> <span>create your own!</span></h3>
-      <Link to='/create' id={style.linkToCreatePage}>+ Create your Story</Link>
+      <div id={style.callToActionDiv}>
+        <h3 id={style.callToAction}>
+          Don't just read,
+          <br /> <span>create your own!</span>
+        </h3>
+        <Link to='/create' id={style.linkToCreatePage} onClick={handleScroll}>
+          + Create your Story
+        </Link>
+      </div>
     </main>
   );
 }

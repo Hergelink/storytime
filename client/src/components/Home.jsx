@@ -23,7 +23,9 @@ export default function Home() {
         </div>
         <div id={style.infoContainer}>
           <div>
-            <h1 id={style.tagline}>Personalized stories in <span>seconds</span></h1>
+            <h1 id={style.tagline}>
+              Personalized stories in <span>seconds</span>
+            </h1>
             <p className={style.infoContent}>
               Say goodbye to boring bedtime routines and hello to captivating,
               personalized stories crafted just for your little ones. With the
@@ -32,14 +34,31 @@ export default function Home() {
               night. Try it now and see the magic unfold!
             </p>
           </div>
-          <Link to='/create' id={style.createStoryBtn} onClick={handleScroll}>
+          <Link
+            to='/create'
+            className={style.createStoryBtn}
+            onClick={handleScroll}
+          >
             + Create Your Story
           </Link>
         </div>
       </section>
       <HowtoUse />
       <hr className={style.linebreak} />
-      <ExampleStories handleScroll={handleScroll}/>
+      <ExampleStories handleScroll={handleScroll} />
+      <section id={style.callToActionDiv}>
+        <h3 id={style.callToAction}>
+          Don't just read,
+          <br /> <span>create your own!</span>
+        </h3>
+        <Link
+          to='/create'
+          className={style.createStoryBtnBottom}
+          onClick={handleScroll}
+        >
+          + Create Your Story
+        </Link>
+      </section>
     </main>
   );
 }

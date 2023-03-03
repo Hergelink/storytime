@@ -51,7 +51,7 @@ export default function Create() {
       }
 
       const returnedData = await response.json();
-      // setImage(`data:image/jpeg;base64, ${returnedData.data.finalImg}`);
+
       setImage(returnedData.data.imageUrl);
       setTitle(returnedData.data.aiOutput);
       setDescription(returnedData.data.entryOutput);
