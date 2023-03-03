@@ -1,0 +1,23 @@
+import React from 'react'
+import style from '../styles/Stories.module.css'
+
+export default function StoryCard({image, title, description}) {
+    const editedTitle = title.replace(/"/g, '')
+
+    console.log(image)
+
+  return (
+    <div className={style.storyContainer}>
+      <div className={style.imageContainer}>
+        <img
+          src={image}
+          alt={`a description of ${title}`}
+        />
+      </div>
+      <div className={style.storyText}>
+        <h2>{editedTitle}</h2>
+        <p className='summary'>{description}</p>
+      </div>
+    </div>
+  )
+}

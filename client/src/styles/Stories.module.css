@@ -1,0 +1,24 @@
+/* Stories Page */
+#pageTitle {
+    text-align: center;
+}
+
+#zeroStoryMessage {
+    text-align: center;
+}
+
+
+/* Story Card */
+.storyContainer {
+    width: 90%;
+    
+}
+
+img {
+ width: 100%;
+ border-radius: 5px;
+}
+
+.storyText {
+
+}

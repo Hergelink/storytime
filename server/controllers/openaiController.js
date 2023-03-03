@@ -23,7 +23,8 @@ const textGenerator = async (req, res) => {
       best_of: 1,
     });
 
-    const aiOutput = response.data.choices[0].text;
+    const aiOutput = response.data.choices[0].text.replace(/\n+|"+/g, '');;
+    
 
     // Image Generation
     const imagePrompt = `Generate a photorealistic image based on this story title and don't include words: ${aiOutput}`;
