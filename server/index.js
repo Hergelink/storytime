@@ -156,3 +156,5 @@ connectDB().then(() => {
     console.log(`Server listening on ${PORT}`);
   });
 })
+
+// starting to divide server and client
