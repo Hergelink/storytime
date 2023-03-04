@@ -26,11 +26,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// mongoose.connect(process.env.DATABASE_CONNECT);
-mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.ypcmtju.mongodb.net/?retryWrites=true&w=majority`)
-// added waitlist ip address
+mongoose.set('strictQuery', false);
+const connectDB = async () => {
+  try {
+    const connect = await mongoose.connect(
+      `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.ypcmtju.mongodb.net/?retryWrites=true&w=majority`
+    );
+    console.log(`Mongo DB Connected: ${connect.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
 
-// Have Node serve the files for our built React app
+// mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.ypcmtju.mongodb.net/?retryWrites=true&w=majority`)
+
 // app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
@@ -136,6 +146,13 @@ app.get('/post', async (req, res) => {
   res.json(await Story.find().sort({ createdAt: -1 }).limit(20));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server listening on ${PORT}`);
+// });
+
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
+})
